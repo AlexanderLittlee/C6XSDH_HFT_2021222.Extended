@@ -64,6 +64,8 @@
         <StackPanel Grid.Column="0" Grid.Row="2">
             <Label Content="Model" Background="Bisque"/>
             <TextBox Text="{Binding SelectedBike.Model}"/>
+            <Label Content="Band ID" Background="Bisque"/>
+            <TextBox Text="{Binding SelectedBike.BrandId}"/>
             <Label Content="Price" Background="Bisque"/>
             <TextBox Text="{Binding SelectedBike.Price}"/>
             <Label Content="Rating" Background="Bisque"/>
@@ -76,6 +78,8 @@
         <StackPanel Grid.Column="1" Grid.Row="2">
             <Label Content="Model" Background="Bisque"/>
             <TextBox Text="{Binding SelectedScooter.Model}"/>
+            <Label Content="Band ID" Background="Bisque"/>
+            <TextBox Text="{Binding SelectedScooter.BrandId}"/>
             <Label Content="Price" Background="Bisque"/>
             <TextBox Text="{Binding SelectedScooter.Price}"/>
             <Label Content="Rating" Background="Bisque"/>
