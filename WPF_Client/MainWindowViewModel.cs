@@ -45,7 +45,7 @@ namespace WPF_Client
         public RestCollection<Bike> Bikes { get; set; }
         public RestCollection<Scooter> Scooters{ get; set; }
         public RestCollection<Brand> Brands { get; set; }
-        public RestCollection<Purchase> Purchases{ get; set; }
+        
 
         public ICommand CreateBike { get; set; }
         public ICommand UpdateBike { get; set; }
@@ -65,10 +65,10 @@ namespace WPF_Client
             if (!IsInDesignMode)
             {
 
-                Bikes = new RestCollection<Bike>("http://localhost:30408/", "bike");
-                Scooters = new RestCollection<Scooter>("http://localhost:30408/", "scooter");
-                Brands = new RestCollection<Brand>("http://localhost:30408/", "brand");
-                Purchases = new RestCollection<Purchase>("http://localhost:30408/", "purchase");
+                Bikes = new RestCollection<Bike>("http://localhost:30408/", "bike","hub");
+                Scooters = new RestCollection<Scooter>("http://localhost:30408/", "scooter", "hub");
+                Brands = new RestCollection<Brand>("http://localhost:30408/", "brand", "hub");
+                
 
 
                 CreateBike = new RelayCommand(() => { Bikes.Add(SelectedBike); });

@@ -1,3 +1,4 @@
+using C6XSDH_HFT_2021222.Endpoint.Services;
 using C6XSDH_HFT_2021222.Logic.Interfaces;
 using C6XSDH_HFT_2021222.Logic.Logic;
 using C6XSDH_HFT_2021222.Models.Entities;
@@ -78,6 +79,7 @@ namespace C6XSDH_HFT_2021222.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
 
             
