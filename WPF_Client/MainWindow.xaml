@@ -10,28 +10,30 @@
         <local:MainWindowViewModel/>
     </Window.DataContext>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            
         </Grid.ColumnDefinitions>
-        <ListBox ItemsSource="{Binding Bikes}" SelectedItem="{Binding SelectedBike}" Grid.Column="0">
+        <ListBox ItemsSource="{Binding Bikes}" SelectedItem="{Binding SelectedBike}" Grid.Column="0" Grid.Row="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Label Content="{Binding Model}"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox ItemsSource="{Binding Scooters}" Grid.Column="1">
+        <ListBox ItemsSource="{Binding Scooters}" SelectedItem="{Binding SelectedBike}" Grid.Column="1" Grid.Row="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Label Content="{Binding Model }"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox ItemsSource="{Binding Brands}" Grid.Column="2">
+        <ListBox ItemsSource="{Binding Brands}" SelectedItem="{Binding SelectedBike}" Grid.Column="2" Grid.Row="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -42,19 +44,20 @@
             </ListBox.ItemTemplate>
         </ListBox>
         
-        <StackPanel Grid.Column="3" >
+        <StackPanel Grid.Column="0" Grid.Row="1" >
             <Button Content="Create Bike" Command="{Binding CreateBike}" Margin="10" Padding="10"/>
             <Button Content="Update Bike" Command="{Binding UpdateBike}" Margin="10" Padding="10"/>
             <Button Content="Delete Bike" Command="{Binding DeleteBike}" Margin="10" Padding="10"/>
-            <Label Content="Modell" Background="AliceBlue"/>
-            <TextBox Text="{Binding SelectedBike.Model}"/>
-            <Label Content="Brand" Background="AliceBlue"/>
-            <TextBox Text="{Binding SelectedBike.Brand.BrandName}"/>
-            <Label Content="Rating" Background="AliceBlue"/>
-            <TextBox Text="{Binding SelectedBike.Rating}"/>
-            <Label Content="Price" Background="AliceBlue"/>
-            <TextBox Text="{Binding SelectedBike.Price}"/>
-            
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" >
+            <Button Content="Create Scooter" Command="{Binding CreateBike}" Margin="10" Padding="10"/>
+            <Button Content="Update Scooter" Command="{Binding UpdateBike}" Margin="10" Padding="10"/>
+            <Button Content="Delete Scooter" Command="{Binding DeleteBike}" Margin="10" Padding="10"/>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="1" >
+            <Button Content="Create Brand" Command="{Binding CreateBike}" Margin="10" Padding="10"/>
+            <Button Content="Update Brand" Command="{Binding UpdateBike}" Margin="10" Padding="10"/>
+            <Button Content="Delete Brand" Command="{Binding DeleteBike}" Margin="10" Padding="10"/>
         </StackPanel>
     </Grid>
 </Window>

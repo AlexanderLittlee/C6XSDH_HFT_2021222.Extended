@@ -15,8 +15,10 @@ namespace WPF_Client
 {
     public class MainWindowViewModel : ObservableRecipient
     {
-        private Bike selectedbike;
 
+        //selected items (propfulls)
+        
+        private Bike selectedbike;
         public Bike SelectedBike
         {
             get { return selectedbike; }
@@ -34,23 +36,85 @@ namespace WPF_Client
                         Rating = value.Rating,
                     };
                     OnPropertyChanged();
+                    (UpdateBike as RelayCommand).NotifyCanExecuteChanged();
                     (DeleteBike as RelayCommand).NotifyCanExecuteChanged();
                     
                 }
             }
         }
 
+        private Scooter selectedscooter;
+        public Scooter SelectedScooter
+        {
+            get { return selectedscooter; }
+            set 
+            {
+                if (value != null)
+                {
 
+                    selectedscooter = new Scooter()
+                    {
+                        Model = value.Model,
+                        Id = value.Id,
+                        Brand = value.Brand,
+                        Price = value.Price,
+                        Rating = value.Rating,
+                        Range = value.Range,
+                        Speed = value.Speed
+                    };
+                    OnPropertyChanged();
+                    (UpdateScooter as RelayCommand).NotifyCanExecuteChanged();
+                    (DeleteScooter as RelayCommand).NotifyCanExecuteChanged();
+
+                }
+            }
+        }
+
+        private Brand selectedbrand;
+        public Brand SelectedBrand
+        {
+            get { return selectedbrand; }
+            set {
+                if (value != null)
+                {
+
+                    selectedbrand = new Brand()
+                    {
+                        Id = value.Id,
+                        BrandName = value.BrandName
+                    };
+                    OnPropertyChanged();
+                    (UpdateBrand as RelayCommand).NotifyCanExecuteChanged();
+                    (DeleteBrand as RelayCommand).NotifyCanExecuteChanged();
+
+                }
+            }
+        }
+
+
+
+        //collections of entities
 
         public RestCollection<Bike> Bikes { get; set; }
         public RestCollection<Scooter> Scooters{ get; set; }
         public RestCollection<Brand> Brands { get; set; }
         
 
+
+        //button commands, crud for each different entity
+
         public ICommand CreateBike { get; set; }
         public ICommand UpdateBike { get; set; }
         public ICommand DeleteBike { get; set; }
-        
+
+        public ICommand CreateScooter { get; set; }
+        public ICommand UpdateScooter { get; set; }
+        public ICommand DeleteScooter { get; set; }
+
+        public ICommand CreateBrand { get; set; }
+        public ICommand UpdateBrand { get; set; }
+        public ICommand DeleteBrand { get; set; }
+
         public static bool IsInDesignMode
         {
             get
@@ -74,7 +138,11 @@ namespace WPF_Client
                 CreateBike = new RelayCommand(() => { Bikes.Add(SelectedBike); });
                 UpdateBike = new RelayCommand(() => { Bikes.Update(SelectedBike); }, () => { return SelectedBike != null; });
                 DeleteBike = new RelayCommand(() => { Bikes.Delete(SelectedBike.Id); }, () => { return SelectedBike != null; });
+                
+                
                 SelectedBike=new Bike();
+                SelectedBrand = new Brand();
+                SelectedScooter = new Scooter();
             }
         }
 

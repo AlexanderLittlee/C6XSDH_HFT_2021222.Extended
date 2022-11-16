@@ -38,7 +38,7 @@ namespace C6XSDH_HFT_2021222.Endpoint.Controllers
         }
 
         [HttpPost]
-        public void Create([FromBody] Brand b, IHubContext<SignalRHub> hub)
+        public void Create([FromBody] Brand b)
         {
             logic.Create(b);
             this.hub.Clients.All.SendAsync("BrandCreated", b);
