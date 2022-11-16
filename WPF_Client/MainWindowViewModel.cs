@@ -1,4 +1,5 @@
 ﻿using C6XSDH_HFT_2021222.Models.Entities;
+using C6XSDH_HFT_2021222.WPFClient;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace WPF_Client
@@ -15,6 +17,7 @@ namespace WPF_Client
 {
     public class MainWindowViewModel : ObservableRecipient
     {
+        
 
         //selected items (propfulls)
         
@@ -132,15 +135,23 @@ namespace WPF_Client
                 Bikes = new RestCollection<Bike>("http://localhost:30408/", "bike","hub");
                 Scooters = new RestCollection<Scooter>("http://localhost:30408/", "scooter", "hub");
                 Brands = new RestCollection<Brand>("http://localhost:30408/", "brand", "hub");
-                
+
 
 
                 CreateBike = new RelayCommand(() => { Bikes.Add(SelectedBike); });
                 UpdateBike = new RelayCommand(() => { Bikes.Update(SelectedBike); }, () => { return SelectedBike != null; });
                 DeleteBike = new RelayCommand(() => { Bikes.Delete(SelectedBike.Id); }, () => { return SelectedBike != null; });
-                
-                
-                SelectedBike=new Bike();
+
+                CreateScooter = new RelayCommand(() => { Scooters.Add(SelectedScooter); });
+                UpdateScooter = new RelayCommand(() => { Scooters.Update(SelectedScooter); }, () => { return SelectedScooter != null; });
+                DeleteScooter = new RelayCommand(() => { Scooters.Delete(SelectedScooter.Id); }, () => { return SelectedScooter != null; });
+
+                CreateBrand= new RelayCommand(() => { Brands.Add(SelectedBrand); });
+                UpdateBrand = new RelayCommand(() => { Brands.Update(SelectedBrand); }, () => { return SelectedBrand != null; });
+                DeleteBrand = new RelayCommand(() => { Brands.Delete(SelectedBrand.Id); }, () => { return SelectedBrand != null; });
+
+
+                SelectedBike =new Bike();
                 SelectedBrand = new Brand();
                 SelectedScooter = new Scooter();
             }
