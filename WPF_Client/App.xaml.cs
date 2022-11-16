@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace WPF_Client
+namespace C6XSDH_HFT_2021222.WPFClient
 {
     /// <summary>
     /// Interaction logic for App.xaml

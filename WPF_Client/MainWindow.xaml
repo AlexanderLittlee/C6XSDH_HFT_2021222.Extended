@@ -5,11 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Client"
         mc:Ignorable="d"
-        Title="BikesnScooters" Height="450" Width="800">
+        Title="BikesnScooters" Height="650" Width="1000">
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding Bikes}" SelectedItem="{Binding SelectedBike}" Grid.Column="0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Model}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox ItemsSource="{Binding Scooters}" Grid.Column="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Model }"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox ItemsSource="{Binding Brands}" Grid.Column="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding BrandName}" />
+                        <Label Content="{Binding Id}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox ItemsSource="{Binding Purchases}" Grid.Column="3">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding Id}" />
+                        <Label Content="{Binding BrandId}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Column="4">
+            <Button Content="Create Bike" Command="{Binding CreateBike}" Margin="10" Padding="10"/>
+            <Button Content="Update Bike" Command="{Binding UpdateBike}" Margin="10" Padding="10"/>
+            <Button Content="Delete Bike" Command="{Binding DeleteBike}" Margin="10" Padding="10"/>
+        </StackPanel>
     </Grid>
 </Window>

@@ -26,7 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{7287BC
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_Client", "WPF_Client\WPF_Client.csproj", "{63468F70-EC7A-44F7-9434-9F3C8DD41304}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C6XSDH_HFT_2021222.WPFClient", "WPF_Client\C6XSDH_HFT_2021222.WPFClient.csproj", "{63468F70-EC7A-44F7-9434-9F3C8DD41304}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
