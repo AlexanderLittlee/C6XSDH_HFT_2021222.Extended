@@ -31,6 +31,7 @@ namespace C6XSDH_HFT_2021222.Endpoint
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSignalR();
             services.AddSingleton<BikeNScooterDBContext>();
 
             services.AddTransient<IRepository<Bike>, BikeRepository>();
