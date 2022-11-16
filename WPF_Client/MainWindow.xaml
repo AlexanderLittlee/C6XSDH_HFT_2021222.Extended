@@ -15,7 +15,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            
         </Grid.ColumnDefinitions>
         <ListBox ItemsSource="{Binding Bikes}" SelectedItem="{Binding SelectedBike}" Grid.Column="0">
             <ListBox.ItemTemplate>
@@ -41,20 +41,20 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox ItemsSource="{Binding Purchases}" Grid.Column="3">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="{Binding Id}" />
-                        <Label Content="{Binding BrandId}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <StackPanel Grid.Column="4">
+        
+        <StackPanel Grid.Column="3" >
             <Button Content="Create Bike" Command="{Binding CreateBike}" Margin="10" Padding="10"/>
             <Button Content="Update Bike" Command="{Binding UpdateBike}" Margin="10" Padding="10"/>
             <Button Content="Delete Bike" Command="{Binding DeleteBike}" Margin="10" Padding="10"/>
+            <Label Content="Modell" Background="AliceBlue"/>
+            <TextBox Text="{Binding SelectedBike.Model}"/>
+            <Label Content="Brand" Background="AliceBlue"/>
+            <TextBox Text="{Binding SelectedBike.Brand.BrandName}"/>
+            <Label Content="Rating" Background="AliceBlue"/>
+            <TextBox Text="{Binding SelectedBike.Rating}"/>
+            <Label Content="Price" Background="AliceBlue"/>
+            <TextBox Text="{Binding SelectedBike.Price}"/>
+            
         </StackPanel>
     </Grid>
 </Window>
