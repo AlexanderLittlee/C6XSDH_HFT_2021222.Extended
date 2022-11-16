@@ -18,7 +18,7 @@ namespace C6XSDH_HFT_2021222.Endpoint.Controllers
         IScooterLogic logic;
         IHubContext<SignalRHub> hub;
 
-        public ScooterController(IScooterLogic l)
+        public ScooterController(IScooterLogic l, IHubContext<SignalRHub> hub)
         {
             logic = l;
             this.hub = hub;

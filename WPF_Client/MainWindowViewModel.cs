@@ -126,6 +126,13 @@ namespace WPF_Client
                 return (bool)DependencyPropertyDescriptor.FromProperty(prop, typeof(FrameworkElement)).Metadata.DefaultValue;
             }
         }
+
+        private static void Nuller(MainWindowViewModel vm)
+        {
+            vm.SelectedBike = new Bike();
+            vm.SelectedBrand = new Brand();
+            vm.SelectedScooter = new Scooter();
+        }
         public MainWindowViewModel()
         {
             
@@ -139,21 +146,19 @@ namespace WPF_Client
 
 
                 CreateBike = new RelayCommand(() => { Bikes.Add(SelectedBike); });
-                UpdateBike = new RelayCommand(() => { Bikes.Update(SelectedBike); }, () => { return SelectedBike != null; });
+                UpdateBike = new RelayCommand(() => { Bikes.Update(SelectedBike); Nuller(this); }, () => { return SelectedBike != null; });
                 DeleteBike = new RelayCommand(() => { Bikes.Delete(SelectedBike.Id); }, () => { return SelectedBike != null; });
 
                 CreateScooter = new RelayCommand(() => { Scooters.Add(SelectedScooter); });
-                UpdateScooter = new RelayCommand(() => { Scooters.Update(SelectedScooter); }, () => { return SelectedScooter != null; });
+                UpdateScooter = new RelayCommand(() => { Scooters.Update(SelectedScooter); Nuller(this); }, () => { return SelectedScooter != null; });
                 DeleteScooter = new RelayCommand(() => { Scooters.Delete(SelectedScooter.Id); }, () => { return SelectedScooter != null; });
 
                 CreateBrand= new RelayCommand(() => { Brands.Add(SelectedBrand); });
-                UpdateBrand = new RelayCommand(() => { Brands.Update(SelectedBrand); }, () => { return SelectedBrand != null; });
+                UpdateBrand = new RelayCommand(() => { Brands.Update(SelectedBrand); Nuller(this); }, () => { return SelectedBrand != null; });
                 DeleteBrand = new RelayCommand(() => { Brands.Delete(SelectedBrand.Id); }, () => { return SelectedBrand != null; });
 
-
-                SelectedBike =new Bike();
-                SelectedBrand = new Brand();
-                SelectedScooter = new Scooter();
+                Nuller(this);
+                
             }
         }
 

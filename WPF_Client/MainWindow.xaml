@@ -12,7 +12,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.95*"/>
             <RowDefinition Height="1.55*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -46,19 +46,19 @@
         </ListBox>
         
         <StackPanel Grid.Column="0" Grid.Row="1" >
-            <Button Content="Create Bike" Command="{Binding CreateBike}" Margin="10" Padding="10"/>
-            <Button Content="Update Bike" Command="{Binding UpdateBike}" Margin="10" Padding="10"/>
-            <Button Content="Delete Bike" Command="{Binding DeleteBike}" Margin="10" Padding="10"/>
+            <Button Content="Create Bike" Command="{Binding CreateBike}" Margin="8" Padding="10"/>
+            <Button Content="Update Bike" Command="{Binding UpdateBike}" Margin="8" Padding="10"/>
+            <Button Content="Delete Bike" Command="{Binding DeleteBike}" Margin="8" Padding="10"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1" >
-            <Button Content="Create Scooter" Command="{Binding CreateScooter}" Margin="10" Padding="10"/>
-            <Button Content="Update Scooter" Command="{Binding UpdateScooter}" Margin="10" Padding="10"/>
-            <Button Content="Delete Scooter" Command="{Binding DeleteScooter}" Margin="10" Padding="10"/>
+            <Button Content="Create Scooter" Command="{Binding CreateScooter}" Margin="8" Padding="10"/>
+            <Button Content="Update Scooter" Command="{Binding UpdateScooter}" Margin="8" Padding="10"/>
+            <Button Content="Delete Scooter" Command="{Binding DeleteScooter}" Margin="8" Padding="10"/>
         </StackPanel>
         <StackPanel Grid.Column="2" Grid.Row="1" >
-            <Button Content="Create Brand" Command="{Binding CreateBrand}" Margin="10" Padding="10"/>
-            <Button Content="Update Brand" Command="{Binding UpdateBrand}" Margin="10" Padding="10"/>
-            <Button Content="Delete Brand" Command="{Binding DeleteBrand}" Margin="10" Padding="10"/>
+            <Button Content="Create Brand" Command="{Binding CreateBrand}" Margin="8" Padding="10"/>
+            <Button Content="Update Brand" Command="{Binding UpdateBrand}" Margin="8" Padding="10"/>
+            <Button Content="Delete Brand" Command="{Binding DeleteBrand}" Margin="8" Padding="10"/>
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="2">
