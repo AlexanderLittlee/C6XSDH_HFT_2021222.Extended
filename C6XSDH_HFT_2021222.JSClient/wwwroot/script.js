@@ -1,5 +1,5 @@
 ﻿let bikes = [];
-
+let bikeIdToUpdate = -1;
 let connection;
 
 getdata();
@@ -17,6 +17,11 @@ function setupSignalR() {
         });
     connection.on
         ("BikeDeleted", (user, message) => {
+            getdata();
+
+        });
+    connection.on
+        ("BikeUpdated", (user, message) => {
             getdata();
 
         });
@@ -57,7 +62,8 @@ function display() {
         document.getElementById('resultarea').innerHTML +=
             "<tr><td>" + t.id + "</td><td>" + t.model + "</td><td>"
         + t.price + "</td><td>" + t.rating + "</td>" +
-`<td><button type="button" onclick="remove(${t.id})">Delete</button>`
+            `<td><button type="button" onclick="remove(${t.id})">Delete</button>`+
+            `<button type="button" onclick="showupdate(${t.id})">Update</button>`+
 "</td ></tr > ";
 
         console.log(t.id)
@@ -77,6 +83,36 @@ function remove(id) {
         })
         .catch((error) => { console.error('Error:', error); });
 }
+
+function showupdate(id) {
+    document.getElementById('bmodeltoupdate').value = bikes.find(t => t['id'] == id)['model'];
+    document.getElementById('bpricetoupdate').value = bikes.find(t => t['id'] == id)['price'];
+    document.getElementById('bratingtoupdate').value = bikes.find(t => t['id'] == id)['rating'];
+    document.getElementById('updateformdiv').style.display = "flex";
+    bikeIdToUpdate = id;
+}
+
+function update() {
+    document.getElementById('updateformdiv').style.display = 'none';
+    let model = document.getElementById('bmodeltoupdate').value;
+    let price = document.getElementById('bpricetoupdate').value;
+    let rating = document.getElementById('bratingtoupdate').value;
+    fetch('http://localhost:30408/bike', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', },
+        body: JSON.stringify(
+            { id: bikeIdToUpdate, model: model, price: price, rating: rating }),
+    })
+        .then(response => response)
+        .then(data => {
+            console.log('Success:', data);
+            getdata();
+        })
+        .catch((error) => { console.error('Error:', error); });
+
+}
+
+
 
 function create() {
     let model = document.getElementById('bmodel').value;

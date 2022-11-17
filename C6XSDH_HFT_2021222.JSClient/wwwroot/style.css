@@ -3,7 +3,7 @@
 }
 
 table, th, td{
-    border: 1px solid black;
+    border: 0.5px solid black;
 }
 
 table{
@@ -17,6 +17,22 @@ th,td{
 th{
     background-color: lightblue;
 }
+
+
+#updateformdiv {
+    display: none;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+    #updateformdiv label, button, input {
+        margin: 10px;
+        padding: 7px;
+    }
+
+    #updateformdiv label {
+        font-weight: bolder;
+    }
 
 #formdiv{
     display:flex;
