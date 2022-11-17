@@ -1,11 +1,50 @@
 ﻿let bikes = [];
+
+let connection;
+
 getdata();
+setupSignalR();
+
+function setupSignalR() {
+    connection = new signalR.HubConnectionBuilder()
+        .withUrl("http://localhost:30408/hub")
+        .configureLogging(signalR.LogLevel.Information)
+        .build();
+    connection.on
+        ("BikeCreated", (user, message) => {
+            getdata();
+
+        });
+    connection.on
+        ("BikeDeleted", (user, message) => {
+            getdata();
+
+        });
+
+    connection.onclose
+        (async () => {
+            await start();
+        });
+    start();
+
+}
+
+async function start() {
+    try {
+        await connection.start();
+        console.log("SignalR Connected.");
+    } catch (err) {
+        console.log(err);
+        setTimeout(start, 5000);
+    }
+};
+
 async function getdata() {
     await fetch('http://localhost:30408/bike')
         .then(x => x.json())
         .then(y => {
             bikes = y;
-            console.log(bikes)
+           // console.log(bikes)
             display();
         });
 
