@@ -145,15 +145,46 @@ namespace WPF_Client
 
 
 
-                CreateBike = new RelayCommand(() => { Bikes.Add(SelectedBike); });
+                CreateBike = new RelayCommand(() =>
+                {
+                     if (SelectedBike!=null)
+                     {
+                        var bike = SelectedBike;
+                        bike.Id = Bikes.OrderByDescending(b => b.Id).FirstOrDefault().Id+1;
+                        Bikes.Add(bike);
+                     }
+                     else
+                        Bikes.Add(SelectedBike);
+                } );
                 UpdateBike = new RelayCommand(() => { Bikes.Update(SelectedBike); Nuller(this); }, () => { return SelectedBike != null; });
                 DeleteBike = new RelayCommand(() => { Bikes.Delete(SelectedBike.Id); }, () => { return SelectedBike != null; });
 
-                CreateScooter = new RelayCommand(() => { Scooters.Add(SelectedScooter); });
+                CreateScooter = new RelayCommand(() => 
+                {
+                    if (SelectedScooter!=null)
+                    {
+                        var scooter = SelectedScooter;
+                        scooter.Id=Scooters.OrderByDescending(b => b.Id).FirstOrDefault().Id + 1;
+                        Scooters.Add(scooter);
+                    }
+                    else
+                        Scooters.Add(SelectedScooter); 
+                
+                });
                 UpdateScooter = new RelayCommand(() => { Scooters.Update(SelectedScooter); Nuller(this); }, () => { return SelectedScooter != null; });
                 DeleteScooter = new RelayCommand(() => { Scooters.Delete(SelectedScooter.Id); }, () => { return SelectedScooter != null; });
 
-                CreateBrand= new RelayCommand(() => { Brands.Add(SelectedBrand); });
+                CreateBrand= new RelayCommand(() => 
+                {
+                    if (SelectedBrand!=null)
+                    {
+                        var brand = SelectedBrand;
+                        brand.Id=Brands.OrderByDescending(b => b.Id).FirstOrDefault().Id + 1;
+                        Brands.Add(brand);
+                    }
+                    else
+                        Brands.Add(SelectedBrand); 
+                });
                 UpdateBrand = new RelayCommand(() => { Brands.Update(SelectedBrand); Nuller(this); }, () => { return SelectedBrand != null; });
                 DeleteBrand = new RelayCommand(() => { Brands.Delete(SelectedBrand.Id); }, () => { return SelectedBrand != null; });
 

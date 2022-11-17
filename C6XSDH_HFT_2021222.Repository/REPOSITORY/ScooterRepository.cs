@@ -18,13 +18,13 @@ namespace C6XSDH_HFT_2021222.Repository.REPOSITORY
 
         public void Create(Scooter thing)
         {
-            context.Bikes.Add(thing);
+            context.Scooters.Add(thing);
             context.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            context.Bikes.Remove(Read(id));
+            context.Scooters.Remove(Read(id));
             context.SaveChanges();
         }
 
