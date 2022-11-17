@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Client"
         mc:Ignorable="d"
-        Title="BikesnScooters" Height="800" Width="1000">
+        Title="BikesnScooters" Height="750" Width="900">
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="0.95*"/>
-            <RowDefinition Height="1.55*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1.4*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -44,28 +44,26 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        
+
         <StackPanel Grid.Column="0" Grid.Row="1" >
-            <Button Content="Create Bike" Command="{Binding CreateBike}" Margin="8" Padding="10"/>
-            <Button Content="Update Bike" Command="{Binding UpdateBike}" Margin="8" Padding="10"/>
-            <Button Content="Delete Bike" Command="{Binding DeleteBike}" Margin="8" Padding="10"/>
+            <Button Content="Create Bike" Background="LightGreen" Command="{Binding CreateBike}" Margin="8" Padding="10"/>
+            <Button Content="Update Bike" Background="RoyalBlue" Command="{Binding UpdateBike}" Margin="8" Padding="10"/>
+            <Button Content="Delete Bike" Background="LightPink" Command="{Binding DeleteBike}" Margin="8" Padding="10"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1" >
-            <Button Content="Create Scooter" Command="{Binding CreateScooter}" Margin="8" Padding="10"/>
-            <Button Content="Update Scooter" Command="{Binding UpdateScooter}" Margin="8" Padding="10"/>
-            <Button Content="Delete Scooter" Command="{Binding DeleteScooter}" Margin="8" Padding="10"/>
+            <Button Content="Create Scooter" Background="LightGreen" Command="{Binding CreateScooter}" Margin="8" Padding="10"/>
+            <Button Content="Update Scooter" Background="RoyalBlue" Command="{Binding UpdateScooter}" Margin="8" Padding="10"/>
+            <Button Content="Delete Scooter" Background="LightPink" Command="{Binding DeleteScooter}" Margin="8" Padding="10"/>
         </StackPanel>
         <StackPanel Grid.Column="2" Grid.Row="1" >
-            <Button Content="Create Brand" Command="{Binding CreateBrand}" Margin="8" Padding="10"/>
-            <Button Content="Update Brand" Command="{Binding UpdateBrand}" Margin="8" Padding="10"/>
-            <Button Content="Delete Brand" Command="{Binding DeleteBrand}" Margin="8" Padding="10"/>
+            <Button Content="Create Brand" Background="LightGreen" Command="{Binding CreateBrand}" Margin="8" Padding="10"/>
+            <Button Content="Update Brand" Background="RoyalBlue" Command="{Binding UpdateBrand}" Margin="8" Padding="10"/>
+            <Button Content="Delete Brand" Background="LightPink"  Command="{Binding DeleteBrand}" Margin="8" Padding="10"/>
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="2">
             <Label Content="Model" Background="Bisque"/>
             <TextBox Text="{Binding SelectedBike.Model}"/>
-            <Label Content="Band ID" Background="Bisque"/>
-            <TextBox Text="{Binding SelectedBike.BrandId}"/>
             <Label Content="Price" Background="Bisque"/>
             <TextBox Text="{Binding SelectedBike.Price}"/>
             <Label Content="Rating" Background="Bisque"/>
@@ -78,8 +76,6 @@
         <StackPanel Grid.Column="1" Grid.Row="2">
             <Label Content="Model" Background="Bisque"/>
             <TextBox Text="{Binding SelectedScooter.Model}"/>
-            <Label Content="Band ID" Background="Bisque"/>
-            <TextBox Text="{Binding SelectedScooter.BrandId}"/>
             <Label Content="Price" Background="Bisque"/>
             <TextBox Text="{Binding SelectedScooter.Price}"/>
             <Label Content="Rating" Background="Bisque"/>
